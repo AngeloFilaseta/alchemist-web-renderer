@@ -1,5 +1,4 @@
 [versions]
-android-plugins = "7.0.0"
 kotest = "5.4.2"
 kotlin = "1.7.10"
 
