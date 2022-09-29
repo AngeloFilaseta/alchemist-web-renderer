@@ -14,8 +14,6 @@ plugins {
     alias(libs.plugins.taskTree)
 }
 
-group = "org.danilopianini"
-
 repositories {
     google()
     mavenCentral()
@@ -69,57 +67,4 @@ tasks.withType<JavadocJar>().configureEach {
     val dokka = tasks.dokkaHtml.get()
     dependsOn(dokka)
     from(dokka.outputDirectory)
-}
-
-signing {
-    if (System.getenv("CI") == "true") {
-        val signingKey: String? by project
-        val signingPassword: String? by project
-        useInMemoryPgpKeys(signingKey, signingPassword)
-    }
-}
-
-publishOnCentral {
-    projectLongName.set("Template for Kotlin Multiplatform Project")
-    projectDescription.set("A template repository for Kotlin Multiplatform projects")
-    repository("https://maven.pkg.github.com/danysk/${rootProject.name}".toLowerCase()) {
-        user.set("DanySK")
-        password.set(System.getenv("GITHUB_TOKEN"))
-    }
-    publishing {
-        publications {
-            withType<MavenPublication> {
-                pom {
-                    developers {
-                        developer {
-                            name.set("Danilo Pianini")
-                            email.set("danilo.pianini@gmail.com")
-                            url.set("http://www.danilopianini.org/")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-npmPublish {
-    registries {
-        register("npmjs") {
-            uri.set("https://registry.npmjs.org")
-            val npmToken: String? by project
-            authToken.set(npmToken)
-            dry.set(npmToken.isNullOrBlank())
-        }
-    }
-}
-
-publishing {
-    publications {
-        publications.withType<MavenPublication>().configureEach {
-            if ("OSSRH" !in name) {
-                artifact(tasks.javadocJar)
-            }
-        }
-    }
 }
