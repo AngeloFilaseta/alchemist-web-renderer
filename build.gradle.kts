@@ -1,7 +1,5 @@
 @file:Suppress("UnstableApiUsage", "UnusedPrivateMember")
 
-import org.danilopianini.gradle.mavencentral.JavadocJar
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -9,8 +7,6 @@ plugins {
     alias(libs.plugins.gitSemVer)
     alias(libs.plugins.kotlin.qa)
     alias(libs.plugins.multiJvmTesting)
-    alias(libs.plugins.npm.publish)
-    alias(libs.plugins.publishOnCentral)
     alias(libs.plugins.taskTree)
 }
 
@@ -61,10 +57,4 @@ kotlin {
 
 tasks.dokkaJavadoc {
     enabled = false
-}
-
-tasks.withType<JavadocJar>().configureEach {
-    val dokka = tasks.dokkaHtml.get()
-    dependsOn(dokka)
-    from(dokka.outputDirectory)
 }
