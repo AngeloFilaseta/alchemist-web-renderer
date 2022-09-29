@@ -1,8 +1,5 @@
-# A template for Kotlin multiplatform projects 
+# alchemist-web-renderer
+[![Codiga Score Badge](https://api.codiga.io/project/34693/score/svg)](https://app.codiga.io/project/34693/dashboard)
+[![Codiga Status Badge](https://api.codiga.io/project/34693/status/svg)](https://app.codiga.io/project/34693/dashboard)
 
-## Features
-* Automatic publish on Maven Central
-* Automatic QA
-* Pre-configured Kotest multiplatform
-* Pre-configured Renovate
-* Pre-configured semantic release for conventional commits
+A module to render an [Alchemist](https://alchemistsimulator.github.io/) Environment on a browser.
