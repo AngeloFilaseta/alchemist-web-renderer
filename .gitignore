@@ -2,6 +2,7 @@
 .idea
 kotlin-js-store
 local.properties
+.pre-commit-config.yaml
 
 # Created by https://www.toptal.com/developers/gitignore/api/gradle,kotlin,java,windows,linux,macos,visualstudiocode,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=gradle,kotlin,java,windows,linux,macos,visualstudiocode,eclipse
