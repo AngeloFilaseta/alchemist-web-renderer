@@ -26,4 +26,4 @@ gitHooks {
     createHooks()
 }
 
-rootProject.name = "Template-for-Kotlin-Multiplatform-Projects".toLowerCase()
+rootProject.name = "alchemist-web-renderer".toLowerCase()
