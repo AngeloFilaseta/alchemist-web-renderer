@@ -1,4 +1,4 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("UnstableApiUsage", "UnusedPrivateMember")
 
 import org.danilopianini.gradle.mavencentral.JavadocJar
 
