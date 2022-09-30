@@ -2,8 +2,10 @@
 alchemist = "24.1.9"
 kotest = "5.4.2"
 kotlin = "1.7.10"
+kotlin-wrappers = "1.0.0-pre.354"
 ktor = "2.0.3"
 logback = "1.2.11"
+react = "18.2.0-pre.392"
 serialization = "1.3.3"
 
 [libraries]
@@ -18,10 +20,15 @@ kotest-runner-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", vers
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-stdlib-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-react = {module = "org.jetbrains.kotlin-wrappers:kotlin-react", version.ref = "react" }
+kotlin-react-dom = {module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom", version.ref = "react" }
 kotlin-test-common = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin" }
 kotlin-test-annotations-common = { module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin" }
+kotlin-wrappers-bom = {module = "org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom", version.ref = "kotlin-wrappers" }
 kotlinx-serialization-json = {module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 ktor-client = {module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-js = {module = "io.ktor:ktor-client-js", version.ref = "ktor" }
+ktor-client-content-negotiation = {module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization = {module = "io.ktor:ktor-serialization", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = {module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-server-compression = {module = "io.ktor:ktor-server-compression", version.ref = "ktor" }
@@ -37,6 +44,10 @@ alchemist = [
     "alchemist",
     "alchemist-incarnation-sapere"
 ]
+kotlin-react = [
+    "kotlin-react",
+    "kotlin-react-dom"
+]
 kotlin-testing-common = [
     "kotest-assertions-core",
     "kotest-framework-engine",
@@ -44,8 +55,15 @@ kotlin-testing-common = [
     "kotlin-test-common",
     "kotlin-test-annotations-common",
 ]
-kotlin-testing-jvm = [ "kotest-assertions-core-jvm", "kotest-runner-junit5-jvm" ]
-
+kotlin-testing-jvm = [
+    "kotest-assertions-core-jvm",
+    "kotest-runner-junit5-jvm"
+]
+ktor-client = [
+    "ktor-client-js",
+    "ktor-client-content-negotiation",
+    "ktor-serialization-kotlinx-json",
+]
 ktor-server = [
     "ktor-serialization",
     "ktor-serialization-kotlinx-json",
@@ -55,7 +73,6 @@ ktor-server = [
     "ktor-server-core-jvm",
     "ktor-server-netty"
 ]
-
 [plugins]
 dokka = "org.jetbrains.dokka:1.7.10"
 gitSemVer = { id = "org.danilopianini.git-sensitive-semantic-versioning", version = "0.3.0" }

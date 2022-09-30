@@ -60,6 +60,13 @@ kotlin {
                 implementation(libs.bundles.kotlin.testing.jvm)
             }
         }
+        val jsMain by getting {
+            dependencies {
+                implementation(libs.bundles.ktor.client)
+                implementation(project.dependencies.enforcedPlatform(libs.kotlin.wrappers.bom))
+                implementation(libs.bundles.kotlin.react)
+            }
+        }
     }
 
     targets.all {
