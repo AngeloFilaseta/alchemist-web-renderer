@@ -3,6 +3,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotest.multiplatform)
     alias(libs.plugins.dokka)
     alias(libs.plugins.gitSemVer)
     alias(libs.plugins.kotlin.qa)
@@ -25,9 +26,14 @@ kotlin {
         }
     }
     js(IR) {
-        browser()
-        nodejs()
-        binaries.library()
+        browser {
+            binaries.executable()
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
+            }
+        }
     }
     sourceSets {
         val commonMain by getting {
@@ -46,6 +52,7 @@ kotlin {
             }
         }
     }
+
     targets.all {
         compilations.all {
             kotlinOptions {
@@ -55,6 +62,18 @@ kotlin {
     }
 }
 
-tasks.dokkaJavadoc {
-    enabled = false
+tasks.named<Test>("jvmTest") {
+    useJUnitPlatform()
+    filter {
+        isFailOnNoMatchingTests = false
+    }
+    testLogging {
+        showExceptions = true
+        showStandardStreams = true
+        events = setOf(
+            org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
+        )
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
 }
