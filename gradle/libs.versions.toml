@@ -1,10 +1,14 @@
 [versions]
+alchemist = "24.1.9"
 kotest = "5.4.2"
 kotlin = "1.7.10"
 ktor = "2.0.3"
 serialization = "1.3.3"
 
 [libraries]
+alchemist-api = { module = "it.unibo.alchemist:alchemist-api", version.ref = "alchemist" }
+alchemist = { module = "it.unibo.alchemist:alchemist", version.ref = "alchemist" }
+alchemist-incarnation-sapere = { module = "it.unibo.alchemist:alchemist-incarnation-sapere", version.ref = "alchemist" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-assertions-core-jvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
@@ -19,6 +23,11 @@ kotlinx-serialization-json = {module = "org.jetbrains.kotlinx:kotlinx-serializat
 ktor-client = {module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 
 [bundles]
+alchemist = [
+    "alchemist-api",
+    "alchemist",
+    "alchemist-incarnation-sapere"
+]
 kotlin-testing-common = [
     "kotest-assertions-core",
     "kotest-framework-engine",

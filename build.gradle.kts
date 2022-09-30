@@ -51,6 +51,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(libs.bundles.kotlin.testing.jvm)
+                implementation(libs.bundles.alchemist)
             }
         }
     }
