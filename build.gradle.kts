@@ -48,12 +48,16 @@ kotlin {
                 implementation(libs.bundles.kotlin.testing.common)
             }
         }
-        val jvmTest by getting {
+        val jvmMain by getting {
             dependencies {
-                implementation(libs.bundles.kotlin.testing.jvm)
                 implementation(libs.bundles.alchemist)
                 implementation(libs.bundles.ktor.server)
                 implementation(libs.logback.classic)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.bundles.kotlin.testing.jvm)
             }
         }
     }
