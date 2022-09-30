@@ -52,6 +52,7 @@ kotlin {
             dependencies {
                 implementation(libs.bundles.kotlin.testing.jvm)
                 implementation(libs.bundles.alchemist)
+                implementation(libs.bundles.ktor.server)
             }
         }
     }
