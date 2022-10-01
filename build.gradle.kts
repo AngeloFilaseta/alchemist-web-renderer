@@ -2,6 +2,7 @@
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    application
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotest.multiplatform)
@@ -18,12 +19,7 @@ repositories {
 
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
-        }
-        testRuns["test"].executionTask.configure {
-            useJUnitPlatform()
-        }
+        withJava()
     }
     js(IR) {
         browser {
@@ -91,5 +87,41 @@ tasks.named<Test>("jvmTest") {
             org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
         )
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
+}
+
+application {
+    mainClass.set("it.unibo.alchemist.Alchemist")
+}
+
+tasks.getByName<JavaExec>("run") {
+    args(
+        "--batch",
+        "--yaml",
+        rootProject.projectDir.absolutePath + "/src/commonTest/resources/yaml/sapere.yml"
+    )
+    classpath(tasks.getByName<Jar>("jvmJar"))
+}
+
+// include JS artifacts in any JAR we generate
+tasks.getByName<Jar>("jvmJar") {
+    val mode = if (project.hasProperty("isProduction") ||
+        project.gradle.startParameter.taskNames.contains("installDist")
+    ) {
+        "Production"
+    } else {
+        "Development"
+    }
+    val taskName = "jsBrowser${mode}Webpack"
+    val webpackTask = tasks.getByName<org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack>(taskName)
+    dependsOn(webpackTask) // JS is compiled first
+    from(File(webpackTask.destinationDirectory, webpackTask.outputFileName))
+}
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }
