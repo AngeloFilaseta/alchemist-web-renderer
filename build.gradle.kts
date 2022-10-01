@@ -96,7 +96,6 @@ application {
 
 tasks.getByName<JavaExec>("run") {
     args(
-        "--batch",
         "--yaml",
         rootProject.projectDir.absolutePath + "/src/commonTest/resources/yaml/sapere.yml"
     )
