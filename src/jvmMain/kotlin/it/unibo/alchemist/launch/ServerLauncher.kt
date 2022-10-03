@@ -4,6 +4,7 @@ import it.unibo.alchemist.AlchemistExecutionOptions
 import it.unibo.alchemist.boundary.interfaces.OutputMonitor
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.loader.Loader
+import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -37,5 +38,6 @@ object ServerLauncher : SimulationLauncher() {
         GlobalScope.launch {
             simulation.run()
         }
+        Server.start()
     }
 }
