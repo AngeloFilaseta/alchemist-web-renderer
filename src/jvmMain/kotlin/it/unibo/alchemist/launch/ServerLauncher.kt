@@ -6,13 +6,9 @@ import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.loader.Loader
 import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
-import it.unibo.alchemist.server.state.ServerState
-import it.unibo.alchemist.server.state.rootReducer
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.reduxkotlin.Store
-import org.reduxkotlin.createThreadSafeStore
 import java.awt.GraphicsEnvironment
 
 /**
@@ -37,12 +33,11 @@ object ServerLauncher : SimulationLauncher() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun launch(loader: Loader, parameters: AlchemistExecutionOptions) {
         val simulation: Simulation<Any, Nothing> = prepareSimulation(loader, parameters, emptyMap<String, Any>())
-        val store: Store<ServerState<Any, Nothing>> = createThreadSafeStore(::rootReducer, ServerState(null))
-        val environmentMonitor: OutputMonitor<Any, Nothing> = EnvironmentMonitor(store)
+        val environmentMonitor: OutputMonitor<Any, Nothing> = EnvironmentMonitor()
         simulation.addOutputMonitor(environmentMonitor)
         GlobalScope.launch {
             simulation.run()
         }
-        Server.start(store)
+        Server.start()
     }
 }
