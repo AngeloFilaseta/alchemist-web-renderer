@@ -18,6 +18,7 @@ import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
+import it.unibo.alchemist.model.Environment
 
 /**
  * A Server implementation that offers API to access the Environment of the Simulation.
@@ -52,6 +53,14 @@ object Server {
 
                 static("/") {
                     resources("")
+                }
+
+                get(Environment.serverModePath) {
+                    call.respond(HttpStatusCode.NotImplemented)
+                }
+
+                get(Environment.clientModePath) {
+                    call.respond(HttpStatusCode.NotImplemented)
                 }
             }
         }.start(wait = true)
