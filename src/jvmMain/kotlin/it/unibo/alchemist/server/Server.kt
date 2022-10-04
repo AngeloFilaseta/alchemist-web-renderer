@@ -1,6 +1,5 @@
 package it.unibo.alchemist.server
 
-import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.json
@@ -15,10 +14,10 @@ import io.ktor.server.plugins.compression.gzip
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.plugins.cors.routing.CORS
 import io.ktor.server.response.respond
-import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import it.unibo.alchemist.model.Environment
+import it.unibo.alchemist.server.routes.mainRoute
 import it.unibo.alchemist.server.routes.simulationActionPause
 import it.unibo.alchemist.server.routes.simulationActionPlay
 import it.unibo.alchemist.server.state.ServerStore.store
@@ -48,11 +47,7 @@ object Server {
             }
 
             routing {
-                get("/") {
-                    this::class.java.classLoader.getResource("index.html")?.let {
-                        call.respondText(it.readText(), ContentType.Text.Html)
-                    } ?: call.respond(HttpStatusCode.NotFound)
-                }
+                mainRoute()
 
                 static("/") {
                     resources("")
