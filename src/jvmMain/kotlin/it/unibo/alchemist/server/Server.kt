@@ -19,10 +19,9 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import it.unibo.alchemist.model.Environment
-import it.unibo.alchemist.model.SimulationAction
-import it.unibo.alchemist.model.interfaces.Position
-import it.unibo.alchemist.server.state.ServerState
-import org.reduxkotlin.Store
+import it.unibo.alchemist.server.routes.simulationActionPause
+import it.unibo.alchemist.server.routes.simulationActionPlay
+import it.unibo.alchemist.server.state.ServerStore.store
 
 /**
  * A Server implementation that offers API to access the Environment of the Simulation.
@@ -34,7 +33,7 @@ object Server {
     /**
      * Configure the server and start it.
      */
-    fun <T, P : Position<out P>> start(store: Store<ServerState<T, P>>) {
+    fun start() {
         embeddedServer(Netty, PORT) {
             install(ContentNegotiation) {
                 json()
@@ -59,13 +58,9 @@ object Server {
                     resources("")
                 }
 
-                get(SimulationAction.playPath) {
-                    call.respond(HttpStatusCode.NotImplemented)
-                }
+                simulationActionPlay()
 
-                get(SimulationAction.pausePath) {
-                    call.respond(HttpStatusCode.NotImplemented)
-                }
+                simulationActionPause()
 
                 get(Environment.serverModePath) {
                     store.state.environment?.let {
