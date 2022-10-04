@@ -1,10 +1,4 @@
-package state.actions
-
-/**
- * Redux action to set the Render Mode of the application.
- * @param renderMode the new render mode.
- */
-data class SetRenderMode(val renderMode: RenderMode)
+package it.unibo.alchemist.model
 
 /**
  * Render mode of the application.

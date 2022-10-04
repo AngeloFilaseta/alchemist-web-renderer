@@ -1,6 +1,6 @@
 package state
 
-import state.actions.RenderMode
+import it.unibo.alchemist.model.RenderMode
 import state.reducers.renderModeReducer
 
 /**

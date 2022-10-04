@@ -1,5 +1,6 @@
 package react.components
 
+import it.unibo.alchemist.model.RenderMode
 import react.FC
 import react.Props
 import react.adapters.reactBootstrap.buttons.ToggleButton
@@ -7,7 +8,6 @@ import react.adapters.reactBootstrap.buttons.ToggleButtonGroup
 import react.adapters.reactBootstrap.navbar.Navbar
 import react.adapters.reactBootstrap.navbar.NavbarBrand
 import react.store
-import state.actions.RenderMode
 import state.actions.SetRenderMode
 
 /**
