@@ -61,6 +61,7 @@ kotlin {
                 implementation(libs.bundles.ktor.client)
                 implementation(project.dependencies.enforcedPlatform(libs.kotlin.wrappers.bom))
                 implementation(libs.bundles.kotlin.react)
+                implementation(libs.redux.kotlin)
                 implementation(npm("react-bootstrap", "2.5.0"))
             }
         }
