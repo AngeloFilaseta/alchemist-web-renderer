@@ -26,7 +26,7 @@ val AppNavbar: FC<Props> = FC {
             onChange = { value ->
                 store.dispatch(SetRenderMode(value as RenderMode))
             }
-            defaultValue = "auto"
+            defaultValue = RenderMode.valueOf("AUTO")
             ToggleButton {
                 id = "client-button"
                 value = RenderMode.valueOf("CLIENT")
