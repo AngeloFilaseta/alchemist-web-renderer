@@ -37,6 +37,7 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.ktor.client.core)
+                implementation(libs.redux.kotlin.threadsafe)
             }
         }
         val commonTest by getting {
@@ -61,7 +62,6 @@ kotlin {
                 implementation(libs.bundles.ktor.client)
                 implementation(project.dependencies.enforcedPlatform(libs.kotlin.wrappers.bom))
                 implementation(libs.bundles.kotlin.react)
-                implementation(libs.redux.kotlin)
                 implementation(npm("react-bootstrap", "2.5.0"))
             }
         }
