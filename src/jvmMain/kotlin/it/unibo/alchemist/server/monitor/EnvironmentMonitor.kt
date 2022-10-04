@@ -5,20 +5,25 @@ import it.unibo.alchemist.model.interfaces.Actionable
 import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.model.interfaces.Position
 import it.unibo.alchemist.model.interfaces.Time
+import it.unibo.alchemist.server.state.ServerState
+import it.unibo.alchemist.server.state.actions.SetEnvironment
+import org.reduxkotlin.Store
 
 /**
  * A monitor that can be used to get the environment state.
  *
  *  @param <P> position type.
  *  @param <T> concentration type.
+ *  @param store the redux store of the application. Used to manipulate the application state.
  */
-class EnvironmentMonitor<T, P : Position<out P>> : OutputMonitor<T, P> {
+class EnvironmentMonitor<T, P : Position<out P>>(private val store: Store<ServerState<T, P>>) : OutputMonitor<T, P> {
 
     /**
      * Every time the environment changes, set it as the current environment.
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
-        println("Step done") // TODO, update the global Environment state
+        store.dispatch(SetEnvironment(environment))
+        println("Environment changed [time=$time, step=$step]") // TODO remove
     }
 
     /**
