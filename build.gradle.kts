@@ -55,6 +55,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(libs.bundles.kotlin.testing.jvm)
+                implementation(libs.ktor.server.test.host)
             }
         }
         val jsMain by getting {
