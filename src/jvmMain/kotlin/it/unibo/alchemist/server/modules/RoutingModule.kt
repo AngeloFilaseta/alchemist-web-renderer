@@ -7,9 +7,9 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import it.unibo.alchemist.model.Environment
+import it.unibo.alchemist.server.routes.SimulationActionRoute.simulationActionPause
+import it.unibo.alchemist.server.routes.SimulationActionRoute.simulationActionPlay
 import it.unibo.alchemist.server.routes.mainRoute
-import it.unibo.alchemist.server.routes.simulationActionPause
-import it.unibo.alchemist.server.routes.simulationActionPlay
 import it.unibo.alchemist.server.state.ServerStore
 
 /**

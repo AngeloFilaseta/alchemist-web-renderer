@@ -1,63 +1,72 @@
 package it.unibo.alchemist.server.routes
 
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
+import io.ktor.util.pipeline.PipelineContext
 import it.unibo.alchemist.core.interfaces.Status
 import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.server.state.ServerStore
 
 /**
- * Route to play the simulation.
+ * Logic of the Routes in the /action path.
  */
-fun Route.simulationActionPlay() {
-    get(SimulationAction.playPath) {
-        ServerStore.store.state.environment?.let {
-            when (it.simulation.status) {
-                Status.INIT -> call.respond(
-                    HttpStatusCode.Conflict,
-                    "The Simulation is being initialized and can't be started."
-                )
-                Status.RUNNING -> call.respond(
-                    HttpStatusCode.Conflict,
-                    "The Simulation is already running."
-                )
-                Status.TERMINATED -> call.respond(
-                    HttpStatusCode.Conflict,
-                    "The Simulation is terminated."
-                )
-                else -> {
-                    it.simulation.play()
-                    call.respond(HttpStatusCode.OK)
-                }
-            }
-        } ?: call.respond(HttpStatusCode.InternalServerError)
-    }
-}
+object SimulationActionRoute {
 
-/**
- * Route to pause the simulation.
- */
-fun Route.simulationActionPause() {
-    get(SimulationAction.pausePath) {
+    /**
+     * Route to play the simulation.
+     */
+    fun Route.simulationActionPlay() {
+        get(SimulationAction.playPath) {
+            simulationActionStep(
+                {
+                    it.simulation.play()
+                },
+                Pair(Status.RUNNING, "The Simulation is already running.")
+            )
+        }
+    }
+
+    /**
+     * Route to pause the simulation.
+     */
+    fun Route.simulationActionPause() {
+        get(SimulationAction.pausePath) {
+            simulationActionStep(
+                {
+                    it.simulation.pause()
+                },
+                Pair(Status.PAUSED, "The Simulation is already paused.")
+            )
+        }
+    }
+
+    private suspend fun PipelineContext<Unit, ApplicationCall>.simulationActionStep(
+        action: (Environment<Any, Nothing>) -> Unit,
+        additionalCheck: Pair<Status, String>
+    ) {
         ServerStore.store.state.environment?.let {
             when (it.simulation.status) {
                 Status.INIT -> call.respond(
                     HttpStatusCode.Conflict,
                     "The Simulation is being initialized and can't be started."
                 )
-                Status.PAUSED -> call.respond(
-                    HttpStatusCode.Conflict,
-                    "The Simulation is already in pause."
-                )
+
                 Status.TERMINATED -> call.respond(
                     HttpStatusCode.Conflict,
                     "The Simulation is terminated."
                 )
+
+                additionalCheck.first -> call.respond(
+                    HttpStatusCode.Conflict,
+                    additionalCheck.second
+                )
                 else -> {
-                    it.simulation.pause()
+                    action(it)
                     call.respond(HttpStatusCode.OK)
                 }
             }
