@@ -70,6 +70,6 @@ object SimulationActionRoute {
                     call.respond(HttpStatusCode.OK)
                 }
             }
-        } ?: call.respond(HttpStatusCode.InternalServerError)
+        } ?: call.respond(HttpStatusCode.InternalServerError, "No Environment found on the server.")
     }
 }
