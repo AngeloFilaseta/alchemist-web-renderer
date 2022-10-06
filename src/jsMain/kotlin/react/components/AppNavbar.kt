@@ -43,5 +43,6 @@ val AppNavbar: FC<Props> = FC {
                 +"Server"
             }
         }
+        PlayButton()
     }
 }
