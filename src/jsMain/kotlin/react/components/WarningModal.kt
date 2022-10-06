@@ -18,11 +18,11 @@ val WarningModal: FC<WarningModalProps> = FC { props ->
             closeButton = true
             ModalTitle {
                 className = "text-danger"
-                +props.title
+                +props.content.first
             }
         }
         ModalBody {
-            +props.message
+            +props.content.second
         }
     }
 }
@@ -32,12 +32,7 @@ val WarningModal: FC<WarningModalProps> = FC { props ->
  */
 external interface WarningModalProps : ModalProps {
     /**
-     * Title of the modal.
+     * Content of the modal. The first line is used as the title, the rest as the message.
      */
-    var title: String
-
-    /**
-     * Message to show in the modal.
-     */
-    var message: String
+    var content: Pair<String, String>
 }
