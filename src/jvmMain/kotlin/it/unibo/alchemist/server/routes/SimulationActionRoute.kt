@@ -42,6 +42,25 @@ fun Route.simulationActionPlay() {
  */
 fun Route.simulationActionPause() {
     get(SimulationAction.pausePath) {
-        call.respond(HttpStatusCode.NotImplemented)
+        ServerStore.store.state.environment?.let {
+            when (it.simulation.status) {
+                Status.INIT -> call.respond(
+                    HttpStatusCode.Conflict,
+                    "The Simulation is being initialized and can't be started."
+                )
+                Status.PAUSED -> call.respond(
+                    HttpStatusCode.Conflict,
+                    "The Simulation is already in pause."
+                )
+                Status.TERMINATED -> call.respond(
+                    HttpStatusCode.Conflict,
+                    "The Simulation is terminated."
+                )
+                else -> {
+                    it.simulation.pause()
+                    call.respond(HttpStatusCode.OK)
+                }
+            }
+        } ?: call.respond(HttpStatusCode.InternalServerError)
     }
 }
