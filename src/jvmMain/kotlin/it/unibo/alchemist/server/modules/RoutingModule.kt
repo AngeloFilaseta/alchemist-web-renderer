@@ -6,7 +6,7 @@ import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import it.unibo.alchemist.model.EnvironmentSurrogate
+import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
 import it.unibo.alchemist.server.routes.SimulationActionRoute.simulationActionPause
 import it.unibo.alchemist.server.routes.SimulationActionRoute.simulationActionPlay
 import it.unibo.alchemist.server.routes.mainRoute

@@ -2,7 +2,7 @@ package react.api
 
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
-import it.unibo.alchemist.model.EnvironmentSurrogate
+import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
 import react.api.utility.JsonClient.client
 import react.api.utility.JsonClient.endpoint
 
