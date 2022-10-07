@@ -11,6 +11,10 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
 
+/**
+ * Custom Serializer for the [it.unibo.alchemist.model.surrogate.Position2DSurrogate] class.
+ * Output to : {"x": Double,"y": Double}
+ */
 object Position2DSurrogateSerializer : KSerializer<Position2DSurrogate> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("Position2D") {
         element<Double>("x")
