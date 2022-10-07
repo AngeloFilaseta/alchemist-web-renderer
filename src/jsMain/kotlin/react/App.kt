@@ -2,6 +2,7 @@ package react
 
 import org.reduxkotlin.Store
 import org.reduxkotlin.createStore
+import react.components.AppContent
 import react.components.AppNavbar
 import state.AppState
 import state.rootReducer
@@ -16,4 +17,5 @@ val store: Store<AppState> = createStore(::rootReducer, AppState())
  */
 val App: FC<Props> = FC {
     AppNavbar()
+    AppContent()
 }
