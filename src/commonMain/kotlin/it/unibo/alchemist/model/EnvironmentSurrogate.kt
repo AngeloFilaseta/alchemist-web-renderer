@@ -4,7 +4,7 @@ package it.unibo.alchemist.model
  * The Environment to render. This is a Surrogate class that will be used instead of the original Alchemist Environment.
  */
 @Suppress("UtilityClassWithPublicConstructor") // TODO Remove in the future
-class Environment<T, U> {
+class EnvironmentSurrogate<T, U> {
 
     /**
      * The available routes for the environment retrieval process.
