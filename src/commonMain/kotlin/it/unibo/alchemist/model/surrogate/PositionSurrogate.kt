@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName("Position")
-data class PositionSurrogate(
+open class PositionSurrogate(
     val coordinates: DoubleArray,
     val dimensions: Int
 ) {

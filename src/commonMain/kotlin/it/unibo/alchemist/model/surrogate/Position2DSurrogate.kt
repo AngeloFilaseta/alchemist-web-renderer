@@ -1,0 +1,14 @@
+package it.unibo.alchemist.model.surrogate
+
+import it.unibo.alchemist.model.serializers.Position2DSurrogateSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+/**
+ * Surrogate class for the [it.unibo.alchemist.model.interfaces.Position2D] interface.
+ * @param x the first coordinate of the position.
+ * @param y the second coordinate of the position.
+ */
+@Serializable(with = Position2DSurrogateSerializer::class)
+@SerialName("Position2D")
+data class Position2DSurrogate(val x: Double, val y: Double) : PositionSurrogate(doubleArrayOf(x, y), 2)
