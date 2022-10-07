@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName("Position")
-data class PositionSurrogate<P : PositionSurrogate<P>> (
+data class PositionSurrogate(
     val coordinates: DoubleArray,
     val dimensions: Int
 ) {
@@ -29,7 +29,7 @@ data class PositionSurrogate<P : PositionSurrogate<P>> (
         if (this === other) return true
         if (other == null || this::class != other::class) return false
 
-        other as PositionSurrogate<*>
+        other as PositionSurrogate
 
         if (!coordinates.contentEquals(other.coordinates)) return false
         if (dimensions != other.dimensions) return false
