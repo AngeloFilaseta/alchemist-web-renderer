@@ -2,6 +2,9 @@ package it.unibo.alchemist.model.surrogate
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class PositionSurrogateTest : StringSpec({
 
@@ -19,5 +22,12 @@ class PositionSurrogateTest : StringSpec({
         positionSurrogate.coordinates[0] shouldBe 5.0
         positionSurrogate.coordinates[1] shouldBe 1.0
         positionSurrogate.coordinates[2] shouldBe 6.0
+    }
+
+    "PositionSurrogate should be serialized correctly" {
+        val serialized = Json.encodeToString(positionSurrogate)
+        serialized shouldBe """{"coordinates":[5.0,1.0,6.0],"dimensions":3}"""
+        val deserialized = Json.decodeFromString<PositionSurrogate>(serialized)
+        deserialized shouldBe positionSurrogate
     }
 })
