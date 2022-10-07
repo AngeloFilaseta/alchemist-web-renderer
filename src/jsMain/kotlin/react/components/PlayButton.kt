@@ -20,7 +20,7 @@ private val scope = MainScope()
 /**
  * Play Button component. Used to start and pause the simulation.
  */
-@OptIn(InternalAPI::class)
+@OptIn(InternalAPI::class) // TODO remove in the future, used for testing because of httpResponse.content
 val PlayButton: FC<Props> = FC {
 
     var playButtonIsPause: Boolean by useState(store.state.playButton == SimulationAction.PAUSE)
