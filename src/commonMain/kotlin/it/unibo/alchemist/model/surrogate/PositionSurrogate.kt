@@ -16,6 +16,12 @@ data class PositionSurrogate<P : PositionSurrogate<P>> (
     val coordinates: DoubleArray,
     val dimensions: Int
 ) {
+    init {
+        require(coordinates.size == dimensions) {
+            "The number of coordinates must be equal to the number of dimensions."
+        }
+    }
+
     /**
      * Generated equals because an Array is present in the properties.
      */
