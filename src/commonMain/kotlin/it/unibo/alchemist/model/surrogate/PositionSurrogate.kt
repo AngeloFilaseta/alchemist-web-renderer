@@ -1,5 +1,6 @@
 package it.unibo.alchemist.model.surrogate
 
+import it.unibo.alchemist.model.surrogate.PositionSurrogate.Companion.serialName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -11,7 +12,7 @@ import kotlinx.serialization.Serializable
  *  See [it.unibo.alchemist.model.interfaces.Position.dimensions] for details.
  */
 @Serializable
-@SerialName("Position")
+@SerialName(serialName)
 open class PositionSurrogate(
     val coordinates: DoubleArray,
     val dimensions: Int
@@ -44,5 +45,12 @@ open class PositionSurrogate(
         var result = coordinates.contentHashCode()
         result = 31 * result + dimensions
         return result
+    }
+
+    companion object {
+        /**
+         * The serial name used by the class.
+         */
+        const val serialName: String = "Position"
     }
 }

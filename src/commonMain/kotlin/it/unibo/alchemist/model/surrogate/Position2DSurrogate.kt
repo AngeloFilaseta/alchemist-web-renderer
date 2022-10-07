@@ -1,6 +1,7 @@
 package it.unibo.alchemist.model.surrogate
 
 import it.unibo.alchemist.model.serializers.Position2DSurrogateSerializer
+import it.unibo.alchemist.model.surrogate.Position2DSurrogate.Companion.serialName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,5 +11,12 @@ import kotlinx.serialization.Serializable
  * @param y the second coordinate of the position.
  */
 @Serializable(with = Position2DSurrogateSerializer::class)
-@SerialName("Position2D")
-data class Position2DSurrogate(val x: Double, val y: Double) : PositionSurrogate(doubleArrayOf(x, y), 2)
+@SerialName(serialName)
+data class Position2DSurrogate(val x: Double, val y: Double) : PositionSurrogate(doubleArrayOf(x, y), 2) {
+    companion object {
+        /**
+         * The serial name used by the class.
+         */
+        const val serialName: String = "Position2D"
+    }
+}
