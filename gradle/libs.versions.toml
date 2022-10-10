@@ -1,7 +1,7 @@
 [versions]
 alchemist = "24.1.10"
 kotest = "5.4.2"
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 kotlin-wrappers = "1.0.0-pre.399"
 ktor = "2.1.2"
 logback = "1.4.3"
