@@ -6,11 +6,13 @@ import kotlinx.serialization.Serializable
 
 /**
  * Surrogate class for the [it.unibo.alchemist.model.interfaces.Environment] interface.
+ * @param <T> the type of concentration.
+ * @param <P> the type of position.
  */
 @Serializable
 @SerialName(serialName)
 @Suppress("UtilityClassWithPublicConstructor") // TODO Remove in the future
-class EnvironmentSurrogate<T> {
+class EnvironmentSurrogate<T, P : PositionSurrogate> {
 
     /**
      * The available routes for the environment retrieval process.
