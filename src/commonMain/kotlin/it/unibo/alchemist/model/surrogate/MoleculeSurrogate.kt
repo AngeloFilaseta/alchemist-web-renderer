@@ -1,0 +1,20 @@
+package it.unibo.alchemist.model.surrogate
+
+import it.unibo.alchemist.model.surrogate.MoleculeSurrogate.Companion.serialName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+/**
+ * Surrogate class for the [it.unibo.alchemist.model.interfaces.Molecule] interface.
+ * @param name the name of the molecule.
+ */
+@Serializable
+@SerialName(serialName)
+data class MoleculeSurrogate(val name: String) {
+    companion object {
+        /**
+         * The serial name used by the class.
+         */
+        const val serialName: String = "Molecule"
+    }
+}
