@@ -21,7 +21,7 @@ Then connect at the address `127.0.0.1:9090`.
 To test the application run the following command:
 
 ```shell
-$ ./gradlew test
+$ ./gradlew check
 ```
 
 A local installation on the Chrome Browser is required to run the tests.
