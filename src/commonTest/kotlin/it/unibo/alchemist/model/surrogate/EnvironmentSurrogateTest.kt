@@ -5,7 +5,7 @@ import io.kotest.matchers.shouldBe
 
 class EnvironmentSurrogateTest : StringSpec({
 
-    val nodesListSet = linkedSetOf(
+    val nodesListSet = listOf(
         NodeSurrogate(
             0,
             mapOf(
