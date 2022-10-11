@@ -8,14 +8,11 @@ class EnvironmentSurrogateTest : StringSpec({
     val nodesListSet = listOf(
         NodeSurrogate(
             0,
-            mapOf(
-                MoleculeSurrogate("test-0") to 0,
-                MoleculeSurrogate("test-1") to 1
-            )
+            mapOf("test-0" to 0, "test-1" to 1)
         ),
         NodeSurrogate(
             1,
-            mapOf(MoleculeSurrogate("test-2") to 2)
+            mapOf("test-2" to 2)
         )
     )
 
