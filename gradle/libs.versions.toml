@@ -1,6 +1,6 @@
 [versions]
 alchemist = "24.1.10"
-kotest = "5.5.0"
+kotest = "5.5.1"
 kotlin = "1.7.20"
 kotlin-wrappers = "1.0.0-pre.401"
 ktor = "2.1.2"
