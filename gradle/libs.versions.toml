@@ -5,7 +5,7 @@ kotlin = "1.7.20"
 kotlin-wrappers = "1.0.0-pre.401"
 ktor = "2.1.2"
 logback = "1.4.3"
-react = "18.2.0-pre.401"
+react = "18.2.0-pre.402"
 redux = "0.5.5"
 serialization = "1.4.0"
 
