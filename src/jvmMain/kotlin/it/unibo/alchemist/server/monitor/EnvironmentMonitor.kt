@@ -21,7 +21,6 @@ class EnvironmentMonitor<T, P : Position<out P>> : OutputMonitor<T, P> {
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
         store.dispatch(SetEnvironment(environment))
-        println("Environment changed [time=$time, step=$step]") // TODO remove
     }
 
     /**
