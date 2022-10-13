@@ -13,6 +13,6 @@ object ServerStore {
      */
     val store: Store<ServerState<Any, Nothing, Any, Nothing>> = createThreadSafeStore(
         ::rootReducer,
-        ServerState(null, EnvironmentSurrogate(-1, listOf()))
+        ServerState("", null, EnvironmentSurrogate(-1, listOf()))
     )
 }
