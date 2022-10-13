@@ -10,12 +10,15 @@ import kotlinx.browser.window
  */
 object JsonClient {
 
-    val endpoint = window.location.origin
+    /**
+     * The endpoint of the server. Used by the client to make API calls.
+     */
+    val endpoint: String = window.location.origin
 
     /**
      * Http client that will make the API call.
      */
-    val client = HttpClient {
+    val client: HttpClient = HttpClient {
         install(ContentNegotiation) {
             json()
         }
