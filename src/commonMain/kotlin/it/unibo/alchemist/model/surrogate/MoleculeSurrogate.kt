@@ -1,6 +1,7 @@
 package it.unibo.alchemist.model.surrogate
 
 import it.unibo.alchemist.model.surrogate.MoleculeSurrogate.Companion.serialName
+import it.unibo.alchemist.model.surrogate.utility.AbstractNameable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,7 +11,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName(serialName)
-data class MoleculeSurrogate(val name: String) {
+data class MoleculeSurrogate(override val name: String) : AbstractNameable() {
     companion object {
         /**
          * The serial name used by the class.
