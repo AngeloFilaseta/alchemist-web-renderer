@@ -11,8 +11,8 @@ import react.Props
 import react.dom.html.ReactHTML.p
 import react.logic.hwAutoStrategy
 import react.logic.retrieveEnvironment
-import react.store
 import react.useState
+import state.AppStore.store
 import kotlin.time.Duration
 
 private val scope = MainScope()

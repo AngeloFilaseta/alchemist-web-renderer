@@ -5,7 +5,7 @@ import react.FC
 import react.Props
 import react.adapters.reactBootstrap.buttons.ToggleButton
 import react.adapters.reactBootstrap.buttons.ToggleButtonGroup
-import react.store
+import state.AppStore.store
 import state.actions.SetRenderMode
 
 /**

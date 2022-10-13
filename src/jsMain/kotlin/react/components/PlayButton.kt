@@ -11,8 +11,8 @@ import react.Props
 import react.adapters.reactBootstrap.buttons.Button
 import react.api.PlayButtonApi.pauseSimulation
 import react.api.PlayButtonApi.playSimulation
-import react.store
 import react.useState
+import state.AppStore.store
 import state.actions.SetPlayButton
 
 private val scope = MainScope()
