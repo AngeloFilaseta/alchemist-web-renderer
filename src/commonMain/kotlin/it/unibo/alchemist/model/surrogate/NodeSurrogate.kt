@@ -13,13 +13,13 @@ typealias MoleculeSurrogateName = String
  * Surrogate class for the [it.unibo.alchemist.model.interfaces.Node] interface.
  * @param id the id of the node.
  * @param contents the mapping between molecules and concentrations.
- * @param <T> the type of concentration.
+ * @param <TS> the type of concentration surrogate.
  */
 @Serializable
 @SerialName(serialName)
-data class NodeSurrogate<T>(
+data class NodeSurrogate<TS>(
     val id: Int,
-    val contents: Map<MoleculeSurrogateName, T>
+    val contents: Map<MoleculeSurrogateName, TS>
 ) {
     companion object {
         /**
