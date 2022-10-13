@@ -8,14 +8,14 @@ import kotlinx.serialization.Serializable
  * Surrogate class for the [it.unibo.alchemist.model.interfaces.Environment] interface.
  * @param dimensions the number of dimensions of the environment.
  * @param nodes the nodes contained in the environment.
- * @param <T> the type of concentration.
- * @param <P> the type of position.
+ * @param <TS> the type of concentration.
+ * @param <PS> the type of position.
  */
 @Serializable
 @SerialName(serialName)
-class EnvironmentSurrogate<T, P : PositionSurrogate>(
+class EnvironmentSurrogate<TS, PS : PositionSurrogate>(
     val dimensions: Int,
-    val nodes: List<NodeSurrogate<T>>
+    val nodes: List<NodeSurrogate<TS>>
 ) {
 
     /**
