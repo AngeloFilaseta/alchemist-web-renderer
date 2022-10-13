@@ -8,7 +8,6 @@ import it.unibo.alchemist.model.interfaces.Time
 import it.unibo.alchemist.model.surrogate.PositionSurrogate
 import it.unibo.alchemist.server.serializers.utility.toEnvironmentSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
-import it.unibo.alchemist.server.state.actions.SetEnvironment
 import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
 
 /**
@@ -28,7 +27,6 @@ class EnvironmentMonitor<T, P : Position<out P>, TS, PS : PositionSurrogate> (
      * Every time the environment changes, set it as the current environment.
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
-        store.dispatch(SetEnvironment(environment))
         store.dispatch(
             SetEnvironmentSurrogate(environment.toEnvironmentSurrogate<T, P, TS, PS>(toConcentrationSurrogate))
         )

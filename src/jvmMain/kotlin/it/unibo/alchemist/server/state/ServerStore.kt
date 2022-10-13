@@ -11,7 +11,7 @@ object ServerStore {
     /**
      * The redux store of the server.
      */
-    val store: Store<ServerState<Any, Nothing, Any, Nothing>> = createThreadSafeStore(
+    val store: Store<ServerState<Any, Nothing>> = createThreadSafeStore(
         ::rootReducer,
         ServerState("", null, EnvironmentSurrogate(-1, listOf()))
     )

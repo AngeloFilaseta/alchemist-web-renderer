@@ -1,33 +1,32 @@
 package it.unibo.alchemist.server.state
 
-import it.unibo.alchemist.model.interfaces.Environment
-import it.unibo.alchemist.model.interfaces.Position
+import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
 import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.server.state.reducers.environmentReducer
+import it.unibo.alchemist.server.state.reducers.simulationReducer
 import it.unibo.alchemist.state.reducers.environmentSurrogateReducer
 import it.unibo.alchemist.state.reducers.incarnationReducer
 
 /**
  * The state of the server.
  * @param incarnation the incarnation used by the simulation.
- * @param environment the current environment.
+ * @param simulation the simulation.
  * @param environmentSurrogate the current environment surrogate.
  */
-data class ServerState<T, P : Position<out P>, TS, PS : PositionSurrogate>(
+data class ServerState<TS, PS : PositionSurrogate>(
     val incarnation: String,
-    val environment: Environment<T, P>?,
+    val simulation: Simulation<Any, Nothing>?,
     val environmentSurrogate: EnvironmentSurrogate<TS, PS>
 )
 
 /**
  * Root reducer of the application. Uses all the other reducers.
  */
-fun <T, P : Position<out P>, TS, PS : PositionSurrogate> rootReducer(
-    state: ServerState<T, P, TS, PS>,
+fun <TS, PS : PositionSurrogate> rootReducer(
+    state: ServerState<TS, PS>,
     action: Any
-): ServerState<T, P, TS, PS> = ServerState(
+): ServerState<TS, PS> = ServerState(
     incarnation = incarnationReducer(state.incarnation, action),
-    environment = environmentReducer(state.environment, action),
+    simulation = simulationReducer(state.simulation, action),
     environmentSurrogate = environmentSurrogateReducer(state.environmentSurrogate, action)
 )

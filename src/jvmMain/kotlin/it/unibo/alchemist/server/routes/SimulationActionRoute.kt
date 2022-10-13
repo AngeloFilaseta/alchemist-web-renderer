@@ -7,9 +7,9 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.util.pipeline.PipelineContext
+import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.core.interfaces.Status
 import it.unibo.alchemist.model.SimulationAction
-import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.server.state.ServerStore
 
 /**
@@ -24,7 +24,7 @@ object SimulationActionRoute {
         get(SimulationAction.playPath) {
             simulationActionStep(
                 {
-                    it.simulation.play()
+                    it.play()
                 },
                 Pair(Status.RUNNING, "The Simulation is already running.")
             )
@@ -38,7 +38,7 @@ object SimulationActionRoute {
         get(SimulationAction.pausePath) {
             simulationActionStep(
                 {
-                    it.simulation.pause()
+                    it.pause()
                 },
                 Pair(Status.PAUSED, "The Simulation is already paused.")
             )
@@ -46,11 +46,11 @@ object SimulationActionRoute {
     }
 
     private suspend fun PipelineContext<Unit, ApplicationCall>.simulationActionStep(
-        action: (Environment<Any, Nothing>) -> Unit,
+        action: (Simulation<Any, Nothing>) -> Unit,
         additionalCheck: Pair<Status, String>
     ) {
-        ServerStore.store.state.environment?.let {
-            when (it.simulation.status) {
+        ServerStore.store.state.simulation?.let {
+            when (it.status) {
                 Status.INIT -> call.respond(
                     HttpStatusCode.Conflict,
                     "The Simulation is being initialized and can't be started."

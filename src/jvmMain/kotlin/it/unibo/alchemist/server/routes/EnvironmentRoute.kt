@@ -1,6 +1,5 @@
 package it.unibo.alchemist.server.routes
 
-import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
@@ -22,9 +21,8 @@ object EnvironmentRoute {
      */
     fun Route.environmentServerMode() {
         get(EnvironmentSurrogate.serverModePath) {
-            store.state.environment?.let {
-                call.respond(it.toString()) // TODO
-            } ?: call.respond(HttpStatusCode.InternalServerError)
+            // TODO add effective logic here
+            call.respond(serialize(store.state.environmentSurrogate))
         }
     }
 

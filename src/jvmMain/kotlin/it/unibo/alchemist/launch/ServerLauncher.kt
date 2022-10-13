@@ -11,6 +11,7 @@ import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
 import it.unibo.alchemist.server.serializers.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
+import it.unibo.alchemist.server.state.actions.SetSimulation
 import it.unibo.alchemist.state.actions.SetIncarnation
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -47,6 +48,7 @@ object ServerLauncher : SimulationLauncher() {
     }
 
     private fun initialize(simulation: Simulation<Any, Nothing>) {
+        store.dispatch(SetSimulation(simulation))
         store.dispatch(SetIncarnation("sapere"))
         if (store.state.incarnation == "sapere") {
             @Suppress("UNCHECKED_CAST")
