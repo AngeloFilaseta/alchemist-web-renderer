@@ -4,8 +4,14 @@ import it.unibo.alchemist.AlchemistExecutionOptions
 import it.unibo.alchemist.boundary.interfaces.OutputMonitor
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.loader.Loader
+import it.unibo.alchemist.model.interfaces.ILsaMolecule
+import it.unibo.alchemist.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
+import it.unibo.alchemist.server.serializers.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
+import it.unibo.alchemist.server.state.ServerStore.store
+import it.unibo.alchemist.state.actions.SetIncarnation
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,11 +39,22 @@ object ServerLauncher : SimulationLauncher() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun launch(loader: Loader, parameters: AlchemistExecutionOptions) {
         val simulation: Simulation<Any, Nothing> = prepareSimulation(loader, parameters, emptyMap<String, Any>())
-        val environmentMonitor: OutputMonitor<Any, Nothing> = EnvironmentMonitor()
-        simulation.addOutputMonitor(environmentMonitor)
+        initialize(simulation)
         GlobalScope.launch {
             simulation.run()
         }
         Server.start()
+    }
+
+    private fun initialize(simulation: Simulation<Any, Nothing>) {
+        store.dispatch(SetIncarnation("sapere"))
+        if (store.state.incarnation == "sapere") {
+            @Suppress("UNCHECKED_CAST")
+            val environmentMonitor: OutputMonitor<Any, Nothing> =
+                EnvironmentMonitor<
+                    List<ILsaMolecule>, Nothing, List<ILsaMoleculeSurrogate>, Position2DSurrogate
+                    >(toSapereConcentrationSurrogate) as OutputMonitor<Any, Nothing>
+            simulation.addOutputMonitor(environmentMonitor)
+        }
     }
 }

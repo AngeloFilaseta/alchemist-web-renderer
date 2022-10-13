@@ -6,7 +6,11 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.server.state.ServerStore
+import it.unibo.alchemist.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.server.state.ServerStore.store
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /**
  * Logic of the Routes in the /environment path.
@@ -18,7 +22,7 @@ object EnvironmentRoute {
      */
     fun Route.environmentServerMode() {
         get(EnvironmentSurrogate.serverModePath) {
-            ServerStore.store.state.environment?.let {
+            store.state.environment?.let {
                 call.respond(it.toString()) // TODO
             } ?: call.respond(HttpStatusCode.InternalServerError)
         }
@@ -29,9 +33,23 @@ object EnvironmentRoute {
      */
     fun Route.environmentClientMode() {
         get(EnvironmentSurrogate.clientModePath) {
-            ServerStore.store.state.environment?.let {
-                call.respond(it.toString()) // TODO
-            } ?: call.respond(HttpStatusCode.InternalServerError)
+            call.respond(serialize(store.state.environmentSurrogate))
         }
+    }
+}
+
+private fun serialize(environmentSurrogate: EnvironmentSurrogate<Any, Nothing>): String {
+    if (store.state.incarnation == "sapere") {
+        @Suppress("UNCHECKED_CAST")
+        val env = store.state.environmentSurrogate
+            as EnvironmentSurrogate<List<ILsaMoleculeSurrogate>, Position2DSurrogate>
+        return Json.encodeToString(env)
+    } else {
+        error(
+            """
+            $environmentSurrogate can't be serialized,
+            as incarnation '${store.state.incarnation}' in not recognized.
+            """
+        )
     }
 }
