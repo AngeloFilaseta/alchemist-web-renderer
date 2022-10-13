@@ -1,5 +1,6 @@
 package it.unibo.alchemist.server.state
 
+import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
 import org.reduxkotlin.Store
 import org.reduxkotlin.createThreadSafeStore
 
@@ -10,5 +11,8 @@ object ServerStore {
     /**
      * The redux store of the server.
      */
-    val store: Store<ServerState<Any, Nothing>> = createThreadSafeStore(::rootReducer, ServerState(null))
+    val store: Store<ServerState<Any, Nothing, Any, Nothing>> = createThreadSafeStore(
+        ::rootReducer,
+        ServerState(null, EnvironmentSurrogate(-1, listOf()))
+    )
 }
