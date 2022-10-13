@@ -24,6 +24,11 @@ import java.awt.GraphicsEnvironment
 object ServerLauncher : SimulationLauncher() {
     override val name: String = "REST Server Launcher"
 
+    /**
+     * Check if the [it.unibo.alchemist.AlchemistExecutionOptions] is valid for this launcher.
+     * @param currentOptions the options to check.
+     * @return true if the options are valid, false otherwise.
+     */
     override fun additionalValidation(currentOptions: AlchemistExecutionOptions): Validation =
         with(currentOptions) {
             when {
@@ -36,6 +41,8 @@ object ServerLauncher : SimulationLauncher() {
 
     /**
      *  Prepares the simulation to be run, execute it in a coroutine and start the REST server.
+     *  @param loader the loader of the simulation.
+     *  @param parameters the parameters of the simulation.
      */
     @OptIn(DelicateCoroutinesApi::class)
     override fun launch(loader: Loader, parameters: AlchemistExecutionOptions) {

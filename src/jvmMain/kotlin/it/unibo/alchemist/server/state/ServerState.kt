@@ -12,6 +12,8 @@ import it.unibo.alchemist.state.reducers.incarnationReducer
  * @param incarnation the incarnation used by the simulation.
  * @param simulation the simulation.
  * @param environmentSurrogate the current environment surrogate.
+ * @param <TS> the type of concentration surrogate.
+ * @param <PS> the type of position surrogate.
  */
 data class ServerState<TS, PS : PositionSurrogate>(
     val incarnation: String,
@@ -21,6 +23,10 @@ data class ServerState<TS, PS : PositionSurrogate>(
 
 /**
  * Root reducer of the application. Uses all the other reducers.
+ * @param state the old server state.
+ * @param action the action to be applied.
+ * @param <TS> the type of concentration surrogate.
+ * @param <PS> the type of position surrogate.
  */
 fun <TS, PS : PositionSurrogate> rootReducer(
     state: ServerState<TS, PS>,

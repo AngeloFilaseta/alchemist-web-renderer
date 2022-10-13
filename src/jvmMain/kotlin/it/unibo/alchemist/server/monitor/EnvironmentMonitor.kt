@@ -19,12 +19,18 @@ import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
  *  @param <TS> concentration surrogate type.
  *  @param toConcentrationSurrogate the mapping function from <T> to <TS>
  */
-class EnvironmentMonitor<T, P : Position<out P>, TS, PS : PositionSurrogate> (
+class EnvironmentMonitor<T, P, TS, PS> (
     private val toConcentrationSurrogate: (T) -> TS
-) : OutputMonitor<T, P> {
+) : OutputMonitor<T, P>
+where P : Position<P>, PS : PositionSurrogate {
 
     /**
-     * Every time the environment changes, set it as the current environment.
+     * Every time the environment changes, map it to its surrogate class and set it as the current
+     * [it.unibo.alchemist.model.surrogate.EnvironmentSurrogate].
+     * @param environment the updated environment.
+     * @param reaction the reaction that triggered the update.
+     * @param time the current time.
+     * @param step the current step.
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
         store.dispatch(
@@ -34,6 +40,7 @@ class EnvironmentMonitor<T, P : Position<out P>, TS, PS : PositionSurrogate> (
 
     /**
      * Call the stepDone method setting time and step to 0.
+     * @param environment the environment.
      */
     override fun initialized(environment: Environment<T, P>) {
         this.stepDone(environment, null, Time.ZERO, 0L)
@@ -41,6 +48,9 @@ class EnvironmentMonitor<T, P : Position<out P>, TS, PS : PositionSurrogate> (
 
     /**
      * Call the stepDone method setting the reaction to null.
+     * @param environment the updated environment.
+     * @param time the final time.
+     * @param step the final step.
      */
     override fun finished(environment: Environment<T, P>, time: Time, step: Long) {
         this.stepDone(environment, null, time, step)

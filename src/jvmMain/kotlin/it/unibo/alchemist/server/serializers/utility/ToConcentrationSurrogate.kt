@@ -9,7 +9,7 @@ import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurr
 object ToConcentrationSurrogate {
 
     /**
-     * A function that maps a list of [it.unibo.alchemist.model.interfaces.ILsaMolecule] a list of
+     * @return A function that maps a list of [it.unibo.alchemist.model.interfaces.ILsaMolecule] a list of
      * [it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate]. This Concentration is used
      * by the SAPERE Incarnation.
      */
