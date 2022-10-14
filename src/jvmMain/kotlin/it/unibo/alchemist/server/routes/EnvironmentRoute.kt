@@ -1,15 +1,16 @@
 package it.unibo.alchemist.server.routes
 
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
+import io.ktor.util.pipeline.PipelineContext
 import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
 import it.unibo.alchemist.model.surrogate.Position2DSurrogate
 import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 /**
  * Logic of the Routes in the /environment path.
@@ -22,7 +23,7 @@ object EnvironmentRoute {
     fun Route.environmentServerMode() {
         get(EnvironmentSurrogate.serverModePath) {
             // TODO add effective logic here
-            call.respond(serialize(store.state.environmentSurrogate))
+            sendSerializedEnvironment()
         }
     }
 
@@ -31,23 +32,21 @@ object EnvironmentRoute {
      */
     fun Route.environmentClientMode() {
         get(EnvironmentSurrogate.clientModePath) {
-            call.respond(serialize(store.state.environmentSurrogate))
+            sendSerializedEnvironment()
         }
     }
 }
 
-private fun serialize(environmentSurrogate: EnvironmentSurrogate<Any, Nothing>): String {
+private suspend fun PipelineContext<Unit, ApplicationCall>.sendSerializedEnvironment() {
     if (store.state.incarnation == "sapere") {
         @Suppress("UNCHECKED_CAST")
         val env = store.state.environmentSurrogate
             as EnvironmentSurrogate<List<ILsaMoleculeSurrogate>, Position2DSurrogate>
-        return Json.encodeToString(env)
+        call.respond(env)
     } else {
-        error(
-            """
-            $environmentSurrogate can't be serialized,
-            as incarnation '${store.state.incarnation}' in not recognized.
-            """
+        call.respond(
+            HttpStatusCode.InternalServerError,
+            "Serialization is not available for incarnation '${store.state.incarnation}'."
         )
     }
 }
