@@ -16,9 +16,9 @@ import it.unibo.alchemist.state.reducers.incarnationReducer
  * @param <PS> the type of position surrogate.
  */
 data class ServerState<TS, PS : PositionSurrogate>(
-    val incarnation: String,
-    val simulation: Simulation<Any, Nothing>?,
-    val environmentSurrogate: EnvironmentSurrogate<TS, PS>
+    val incarnation: String = "",
+    val simulation: Simulation<Any, Nothing>? = null,
+    val environmentSurrogate: EnvironmentSurrogate<TS, PS> = EnvironmentSurrogate.uninitializedEnvironment()
 )
 
 /**
