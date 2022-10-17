@@ -38,5 +38,13 @@ class EnvironmentSurrogate<TS, PS : PositionSurrogate>(
          * Serial name used by the class.
          */
         const val serialName: String = "Environment"
+
+        /**
+         * @param <TS> the type of concentration.
+         * @param <PS> the type of position.
+         * @return an empty and uninitialized environment surrogate.
+         */
+        fun <TS, PS : PositionSurrogate> uninitializedEnvironment(): EnvironmentSurrogate<TS, PS> =
+            EnvironmentSurrogate(-1, emptyList())
     }
 }
