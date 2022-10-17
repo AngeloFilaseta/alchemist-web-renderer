@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 @SerialName(serialName)
-class EnvironmentSurrogate<TS, PS : PositionSurrogate>(
+data class EnvironmentSurrogate<TS, PS : PositionSurrogate>(
     val dimensions: Int,
     val nodes: List<NodeSurrogate<TS>>
 ) {
