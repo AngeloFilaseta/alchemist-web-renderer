@@ -1,8 +1,10 @@
 package react.api
 
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.model.surrogate.PositionSurrogate
 import react.api.utility.JsonClient.client
 import react.api.utility.JsonClient.endpoint
 
@@ -12,20 +14,22 @@ import react.api.utility.JsonClient.endpoint
 object EnvironmentApi {
 
     /**
-     * Get the environment of the simulation in a serialized form. The client will use this to render the environment.
+     * Get the environment of the simulation in a serialized form.
+     * The client will use this to render the environment.
+     * @param <TS> the type of concentration surrogate.
+     * @param <PS> the type of position surrogate.
+     * @return the environment surrogate that the server sent.
      */
-    suspend fun getEnvironmentClient(): HttpResponse {
-        return getEnvironment(EnvironmentSurrogate.clientModePath)
+    suspend inline fun <reified TS, reified PS> getEnvironmentClient(): EnvironmentSurrogate<TS, PS>
+    where PS : PositionSurrogate {
+        return client.get(endpoint + EnvironmentSurrogate.serverModePath).body()
     }
 
     /**
      * Get the environment of the simulation, already rendered by the server.
+     * TODO this method needs a proper implementation.
      */
     suspend fun getEnvironmentServer(): HttpResponse {
-        return getEnvironment(EnvironmentSurrogate.serverModePath)
-    }
-
-    private suspend fun getEnvironment(path: String): HttpResponse {
-        return client.get(endpoint + path)
+        return client.get(endpoint + EnvironmentSurrogate.clientModePath)
     }
 }
