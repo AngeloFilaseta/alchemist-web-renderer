@@ -1,15 +1,12 @@
-@file:Suppress("UNCHECKED_CAST")
-
 package it.unibo.alchemist.client.logic
 
+import it.unibo.alchemist.client.api.EnvironmentApi
+import it.unibo.alchemist.client.state.AppStore.store
 import it.unibo.alchemist.common.model.RenderMode
 import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
 import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 import kotlinx.browser.window
-import it.unibo.alchemist.client.api.EnvironmentApi
-import it.unibo.alchemist.client.state.AppStore.store
 
 /**
  * The recommended number of core to use for the Auto mode.
@@ -25,9 +22,8 @@ private const val MIN_HW_CONCURRENCY: Int = 4
 suspend fun updateState(renderMode: RenderMode, autoStrategy: () -> RenderMode) {
     when (renderMode) {
         RenderMode.CLIENT -> {
-            val env: EnvironmentSurrogate<List<ILsaMoleculeSurrogate>, PositionSurrogate> =
-                EnvironmentApi.getEnvironmentClient()
-            store.dispatch(SetEnvironmentSurrogate(env as EnvironmentSurrogate<Any, Nothing>))
+            val env: EnvironmentSurrogate<Any, PositionSurrogate> = EnvironmentApi.getEnvironmentClient()
+            store.dispatch(SetEnvironmentSurrogate(env))
         }
         RenderMode.SERVER -> {
             TODO()

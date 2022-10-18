@@ -8,16 +8,14 @@ import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 
 /**
  * Reducer for the environment surrogate.
- * @param <TS> type of the concentration surrogate.
- * @param <PS> type of the position surrogate.
  * @param state the current state.
  * @param action the requested action.
  */
-fun <TS, PS : PositionSurrogate> environmentSurrogateReducer(
-    state: EnvironmentSurrogate<TS, PS>,
+fun environmentSurrogateReducer(
+    state: EnvironmentSurrogate<Any, PositionSurrogate>,
     action: Any
-): EnvironmentSurrogate<TS, PS> =
+): EnvironmentSurrogate<Any, PositionSurrogate> =
     when (action) {
-        is SetEnvironmentSurrogate<*, *> -> action.environmentSurrogate as EnvironmentSurrogate<TS, PS>
+        is SetEnvironmentSurrogate -> action.environmentSurrogate
         else -> state
     }

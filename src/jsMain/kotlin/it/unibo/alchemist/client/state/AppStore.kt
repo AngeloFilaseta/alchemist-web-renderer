@@ -11,5 +11,5 @@ object AppStore {
     /**
      * The redux store of the application.
      */
-    val store: Store<AppState<Any, Nothing>> = createStore(::rootReducer, AppState())
+    val store: Store<AppState> = createStore(::rootReducer, AppState())
 }

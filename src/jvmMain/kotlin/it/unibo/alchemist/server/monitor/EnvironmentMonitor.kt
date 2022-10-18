@@ -1,14 +1,15 @@
 package it.unibo.alchemist.server.monitor
 
 import it.unibo.alchemist.boundary.interfaces.OutputMonitor
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 import it.unibo.alchemist.model.interfaces.Actionable
 import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.model.interfaces.Position
 import it.unibo.alchemist.model.interfaces.Time
-import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.server.surrogates.utility.toEnvironmentSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
-import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
+import it.unibo.alchemist.server.surrogates.utility.toEnvironmentSurrogate
 
 /**
  * A monitor that can be used to get the environment state.
@@ -24,7 +25,7 @@ class EnvironmentMonitor<T, P, TS, PS> (
     private val toConcentrationSurrogate: (T) -> TS,
     private val toPositionSurrogate: (P) -> PS
 ) : OutputMonitor<T, P>
-where P : Position<P>, PS : PositionSurrogate {
+where TS : Any, P : Position<P>, PS : PositionSurrogate {
 
     /**
      * Every time the environment changes, map it to its surrogate class and set it as the current
@@ -35,11 +36,9 @@ where P : Position<P>, PS : PositionSurrogate {
      * @param step the current step.
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
-        store.dispatch(
-            SetEnvironmentSurrogate(
-                environment.toEnvironmentSurrogate(toConcentrationSurrogate, toPositionSurrogate)
-            )
-        )
+        val newEnvironmentSurrogate: EnvironmentSurrogate<Any, PositionSurrogate> =
+            environment.toEnvironmentSurrogate(toConcentrationSurrogate, toPositionSurrogate)
+        store.dispatch(SetEnvironmentSurrogate(newEnvironmentSurrogate))
     }
 
     /**
