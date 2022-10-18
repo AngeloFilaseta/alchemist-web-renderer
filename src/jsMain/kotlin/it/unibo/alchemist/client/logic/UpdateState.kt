@@ -2,11 +2,11 @@
 
 package it.unibo.alchemist.client.logic
 
-import it.unibo.alchemist.model.RenderMode
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
-import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
+import it.unibo.alchemist.common.model.RenderMode
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 import kotlinx.browser.window
 import it.unibo.alchemist.client.api.EnvironmentApi
 import it.unibo.alchemist.client.state.AppStore.store

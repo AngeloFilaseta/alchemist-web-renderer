@@ -1,10 +1,10 @@
 package it.unibo.alchemist.client.state
 
-import it.unibo.alchemist.model.RenderMode
-import it.unibo.alchemist.model.SimulationAction
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.state.reducers.environmentSurrogateReducer
+import it.unibo.alchemist.common.model.RenderMode
+import it.unibo.alchemist.common.model.SimulationAction
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.state.reducers.environmentSurrogateReducer
 import it.unibo.alchemist.client.state.reducers.playButtonReducer
 import it.unibo.alchemist.client.state.reducers.renderModeReducer
 

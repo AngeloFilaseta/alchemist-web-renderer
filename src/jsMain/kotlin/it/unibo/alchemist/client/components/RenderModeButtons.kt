@@ -1,6 +1,6 @@
 package it.unibo.alchemist.client.components
 
-import it.unibo.alchemist.model.RenderMode
+import it.unibo.alchemist.common.model.RenderMode
 import react.FC
 import react.Props
 import it.unibo.alchemist.client.adapters.reactBootstrap.buttons.ToggleButton

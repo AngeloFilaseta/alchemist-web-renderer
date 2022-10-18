@@ -3,7 +3,7 @@ package it.unibo.alchemist.client.components
 import io.ktor.http.HttpStatusCode
 import io.ktor.util.InternalAPI
 import io.ktor.utils.io.readUTF8Line
-import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.common.model.SimulationAction
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import react.FC

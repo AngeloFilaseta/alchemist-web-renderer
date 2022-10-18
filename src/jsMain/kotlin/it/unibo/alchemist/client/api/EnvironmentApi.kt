@@ -3,8 +3,8 @@ package it.unibo.alchemist.client.api
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
 import it.unibo.alchemist.client.api.utility.JsonClient.client
 import it.unibo.alchemist.client.api.utility.JsonClient.endpoint
 

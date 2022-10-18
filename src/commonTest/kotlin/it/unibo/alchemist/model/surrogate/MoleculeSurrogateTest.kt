@@ -2,6 +2,7 @@ package it.unibo.alchemist.model.surrogate
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import it.unibo.alchemist.common.model.surrogate.MoleculeSurrogate
 
 class MoleculeSurrogateTest : StringSpec({
 

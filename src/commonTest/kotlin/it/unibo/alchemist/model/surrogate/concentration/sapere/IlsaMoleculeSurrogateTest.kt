@@ -2,7 +2,7 @@ package it.unibo.alchemist.model.surrogate.concentration.sapere
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 
 class IlsaMoleculeSurrogateTest : StringSpec({
 

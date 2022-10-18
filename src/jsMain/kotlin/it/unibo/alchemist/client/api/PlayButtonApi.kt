@@ -1,7 +1,7 @@
 package it.unibo.alchemist.client.api
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
-import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.common.model.SimulationAction
 import it.unibo.alchemist.client.api.utility.JsonClient.client
 import it.unibo.alchemist.client.api.utility.JsonClient.endpoint
 

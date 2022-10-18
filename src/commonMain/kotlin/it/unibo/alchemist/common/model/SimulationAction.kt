@@ -1,4 +1,4 @@
-package it.unibo.alchemist.model
+package it.unibo.alchemist.common.model
 
 /**
  * Actions that can be performed on a simulation.

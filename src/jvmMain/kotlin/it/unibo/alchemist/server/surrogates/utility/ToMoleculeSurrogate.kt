@@ -1,7 +1,7 @@
 package it.unibo.alchemist.server.surrogates.utility
 
 import it.unibo.alchemist.model.interfaces.Molecule
-import it.unibo.alchemist.model.surrogate.MoleculeSurrogate
+import it.unibo.alchemist.common.model.surrogate.MoleculeSurrogate
 
 /**
  * A function that maps a [it.unibo.alchemist.model.interfaces.Molecule] to its surrogate class

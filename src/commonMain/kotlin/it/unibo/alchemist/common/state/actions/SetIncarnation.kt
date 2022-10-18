@@ -1,4 +1,4 @@
-package it.unibo.alchemist.state.actions
+package it.unibo.alchemist.common.state.actions
 
 /**
  * Redux action to set the incarnation used by the simulation.

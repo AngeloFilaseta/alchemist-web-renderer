@@ -7,8 +7,8 @@ import it.unibo.alchemist.boundary.interfaces.OutputMonitor
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.loader.Loader
 import it.unibo.alchemist.model.interfaces.ILsaMolecule
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
 import it.unibo.alchemist.server.surrogates.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
@@ -16,7 +16,7 @@ import it.unibo.alchemist.server.surrogates.utility.ToPositionSurrogate.toGenera
 import it.unibo.alchemist.server.surrogates.utility.ToPositionSurrogate.toPosition2DSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
 import it.unibo.alchemist.server.state.actions.SetSimulation
-import it.unibo.alchemist.state.actions.SetIncarnation
+import it.unibo.alchemist.common.state.actions.SetIncarnation
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

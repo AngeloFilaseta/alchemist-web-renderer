@@ -1,4 +1,4 @@
-package it.unibo.alchemist.model.surrogate.utility
+package it.unibo.alchemist.common.model.surrogate.utility
 
 import kotlinx.serialization.Serializable
 

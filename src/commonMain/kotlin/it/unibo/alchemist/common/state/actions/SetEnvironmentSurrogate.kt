@@ -1,7 +1,7 @@
-package it.unibo.alchemist.state.actions
+package it.unibo.alchemist.common.state.actions
 
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
 
 /**
  * Redux action to set the EnvironmentSurrogate of the application.

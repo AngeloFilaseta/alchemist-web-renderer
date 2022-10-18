@@ -9,7 +9,7 @@ import io.ktor.server.routing.get
 import io.ktor.util.pipeline.PipelineContext
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.core.interfaces.Status
-import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.common.model.SimulationAction
 import it.unibo.alchemist.server.state.ServerStore
 
 /**

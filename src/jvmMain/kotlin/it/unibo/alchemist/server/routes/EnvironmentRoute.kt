@@ -7,9 +7,9 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.util.pipeline.PipelineContext
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.Position2DSurrogate
-import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
 
 /**

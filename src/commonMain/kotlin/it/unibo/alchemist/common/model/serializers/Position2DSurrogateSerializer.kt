@@ -1,6 +1,6 @@
-package it.unibo.alchemist.model.serializers
+package it.unibo.alchemist.common.model.serializers
 
-import it.unibo.alchemist.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.common.model.surrogate.Position2DSurrogate
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor

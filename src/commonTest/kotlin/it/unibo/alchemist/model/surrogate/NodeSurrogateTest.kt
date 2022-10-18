@@ -2,6 +2,8 @@ package it.unibo.alchemist.model.surrogate
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import it.unibo.alchemist.common.model.surrogate.NodeSurrogate
+import it.unibo.alchemist.common.model.surrogate.Position2DSurrogate
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

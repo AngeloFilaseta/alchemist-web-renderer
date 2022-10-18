@@ -3,8 +3,8 @@ package it.unibo.alchemist.server.surrogates.utility
 import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.model.interfaces.Node
 import it.unibo.alchemist.model.interfaces.Position
-import it.unibo.alchemist.model.surrogate.NodeSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.NodeSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
 
 /**
  * A function that maps a [it.unibo.alchemist.model.interfaces.Node] to its surrogate class

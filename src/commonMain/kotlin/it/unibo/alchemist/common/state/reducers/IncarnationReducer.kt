@@ -1,6 +1,6 @@
-package it.unibo.alchemist.state.reducers
+package it.unibo.alchemist.common.state.reducers
 
-import it.unibo.alchemist.state.actions.SetIncarnation
+import it.unibo.alchemist.common.state.actions.SetIncarnation
 
 /**
  * Reducer for the incarnation surrogate.

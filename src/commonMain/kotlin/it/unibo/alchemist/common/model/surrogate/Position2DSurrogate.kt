@@ -1,7 +1,7 @@
-package it.unibo.alchemist.model.surrogate
+package it.unibo.alchemist.common.model.surrogate
 
-import it.unibo.alchemist.model.serializers.Position2DSurrogateSerializer
-import it.unibo.alchemist.model.surrogate.Position2DSurrogate.Companion.serialName
+import it.unibo.alchemist.common.model.serializers.Position2DSurrogateSerializer
+import it.unibo.alchemist.common.model.surrogate.Position2DSurrogate.Companion.serialName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,7 +1,7 @@
 package it.unibo.alchemist.server.surrogates.utility
 
 import it.unibo.alchemist.model.interfaces.ILsaMolecule
-import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 
 /**
  * A set of functions to map the concentrations to the corresponding surrogate classes.

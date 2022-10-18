@@ -1,6 +1,6 @@
 package it.unibo.alchemist.client.state.reducers
 
-import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.common.model.SimulationAction
 import it.unibo.alchemist.client.state.actions.SetPlayButton
 
 /**

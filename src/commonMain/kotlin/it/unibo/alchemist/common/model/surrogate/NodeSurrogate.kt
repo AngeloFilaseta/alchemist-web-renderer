@@ -1,6 +1,6 @@
-package it.unibo.alchemist.model.surrogate
+package it.unibo.alchemist.common.model.surrogate
 
-import it.unibo.alchemist.model.surrogate.NodeSurrogate.Companion.serialName
+import it.unibo.alchemist.common.model.surrogate.NodeSurrogate.Companion.serialName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

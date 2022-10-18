@@ -1,11 +1,11 @@
 package it.unibo.alchemist.server.state
 
 import it.unibo.alchemist.core.interfaces.Simulation
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
 import it.unibo.alchemist.server.state.reducers.simulationReducer
-import it.unibo.alchemist.state.reducers.environmentSurrogateReducer
-import it.unibo.alchemist.state.reducers.incarnationReducer
+import it.unibo.alchemist.common.state.reducers.environmentSurrogateReducer
+import it.unibo.alchemist.common.state.reducers.incarnationReducer
 
 /**
  * The state of the server.

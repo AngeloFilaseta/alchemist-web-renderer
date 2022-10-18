@@ -1,6 +1,6 @@
 package it.unibo.alchemist.client.state.actions
 
-import it.unibo.alchemist.model.RenderMode
+import it.unibo.alchemist.common.model.RenderMode
 
 /**
  * Redux action to set the Render Mode of the application.

@@ -1,6 +1,6 @@
 package it.unibo.alchemist.client.state.reducers
 
-import it.unibo.alchemist.model.RenderMode
+import it.unibo.alchemist.common.model.RenderMode
 import it.unibo.alchemist.client.state.actions.SetRenderMode
 
 /**

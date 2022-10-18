@@ -1,10 +1,10 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package it.unibo.alchemist.state.reducers
+package it.unibo.alchemist.common.state.reducers
 
-import it.unibo.alchemist.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
+import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 
 /**
  * Reducer for the environment surrogate.

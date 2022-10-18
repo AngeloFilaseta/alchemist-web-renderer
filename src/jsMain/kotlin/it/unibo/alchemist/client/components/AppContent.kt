@@ -1,6 +1,6 @@
 package it.unibo.alchemist.client.components
 
-import it.unibo.alchemist.model.SimulationAction
+import it.unibo.alchemist.common.model.SimulationAction
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.js.timers.setInterval
