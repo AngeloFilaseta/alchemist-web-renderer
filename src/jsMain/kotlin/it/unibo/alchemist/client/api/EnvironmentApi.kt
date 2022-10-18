@@ -22,7 +22,7 @@ object EnvironmentApi {
      */
     suspend inline fun <reified TS, reified PS> getEnvironmentClient(): EnvironmentSurrogate<TS, PS>
     where PS : PositionSurrogate {
-        return client.get(endpoint + EnvironmentSurrogate.serverModePath).body()
+        return client.get(endpoint + EnvironmentSurrogate.clientModePath).body()
     }
 
     /**
@@ -30,6 +30,6 @@ object EnvironmentApi {
      * TODO this method needs a proper implementation.
      */
     suspend fun getEnvironmentServer(): HttpResponse {
-        return client.get(endpoint + EnvironmentSurrogate.clientModePath)
+        return client.get(endpoint + EnvironmentSurrogate.serverModePath)
     }
 }

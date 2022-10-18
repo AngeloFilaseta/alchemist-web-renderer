@@ -1,5 +1,3 @@
-@file:Suppress("UNCHECKED_CAST")
-
 package it.unibo.alchemist.common.state.reducers
 
 import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
@@ -16,6 +14,6 @@ fun environmentSurrogateReducer(
     action: Any
 ): EnvironmentSurrogate<Any, PositionSurrogate> =
     when (action) {
-        is SetEnvironmentSurrogate -> action.environmentSurrogate
+        is SetEnvironmentSurrogate<*, *> -> action.environmentSurrogate
         else -> state
     }

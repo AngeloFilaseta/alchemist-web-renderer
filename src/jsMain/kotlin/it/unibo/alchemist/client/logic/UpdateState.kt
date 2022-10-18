@@ -4,7 +4,8 @@ import it.unibo.alchemist.client.api.EnvironmentApi
 import it.unibo.alchemist.client.state.ClientStore.store
 import it.unibo.alchemist.common.model.RenderMode
 import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
-import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
+import it.unibo.alchemist.common.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.common.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.common.state.actions.SetEnvironmentSurrogate
 import kotlinx.browser.window
 
@@ -22,7 +23,8 @@ private const val MIN_HW_CONCURRENCY: Int = 4
 suspend fun updateState(renderMode: RenderMode, autoStrategy: () -> RenderMode) {
     when (renderMode) {
         RenderMode.CLIENT -> {
-            val env: EnvironmentSurrogate<Any, PositionSurrogate> = EnvironmentApi.getEnvironmentClient()
+            val env: EnvironmentSurrogate<List<ILsaMoleculeSurrogate>, Position2DSurrogate> =
+                EnvironmentApi.getEnvironmentClient()
             store.dispatch(SetEnvironmentSurrogate(env))
         }
         RenderMode.SERVER -> {
