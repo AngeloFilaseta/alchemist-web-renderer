@@ -1,4 +1,4 @@
-package it.unibo.alchemist.model.surrogate
+package it.unibo.alchemist.common.surrogate
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe

@@ -1,4 +1,4 @@
-package it.unibo.alchemist.model.surrogate.concentration.sapere
+package it.unibo.alchemist.common.surrogate.concentration.sapere
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
