@@ -12,7 +12,7 @@ import it.unibo.alchemist.client.adapters.reactBootstrap.buttons.Button
 import it.unibo.alchemist.client.api.PlayButtonApi.pauseSimulation
 import it.unibo.alchemist.client.api.PlayButtonApi.playSimulation
 import react.useState
-import it.unibo.alchemist.client.state.AppStore.store
+import it.unibo.alchemist.client.state.ClientStore.store
 import it.unibo.alchemist.client.state.actions.SetPlayButton
 
 private val scope = MainScope()

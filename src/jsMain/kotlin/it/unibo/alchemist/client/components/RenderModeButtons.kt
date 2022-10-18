@@ -5,7 +5,7 @@ import react.FC
 import react.Props
 import it.unibo.alchemist.client.adapters.reactBootstrap.buttons.ToggleButton
 import it.unibo.alchemist.client.adapters.reactBootstrap.buttons.ToggleButtonGroup
-import it.unibo.alchemist.client.state.AppStore.store
+import it.unibo.alchemist.client.state.ClientStore.store
 import it.unibo.alchemist.client.state.actions.SetRenderMode
 
 /**

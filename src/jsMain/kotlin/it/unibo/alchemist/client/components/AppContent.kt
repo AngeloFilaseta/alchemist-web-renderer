@@ -1,5 +1,8 @@
 package it.unibo.alchemist.client.components
 
+import it.unibo.alchemist.client.logic.hwAutoStrategy
+import it.unibo.alchemist.client.logic.updateState
+import it.unibo.alchemist.client.state.ClientStore.store
 import it.unibo.alchemist.common.model.SimulationAction
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -7,10 +10,7 @@ import kotlinx.js.timers.setInterval
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.p
-import it.unibo.alchemist.client.logic.hwAutoStrategy
-import it.unibo.alchemist.client.logic.updateState
 import react.useState
-import it.unibo.alchemist.client.state.AppStore.store
 import kotlin.time.Duration
 
 private val scope = MainScope()

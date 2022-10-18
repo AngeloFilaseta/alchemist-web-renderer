@@ -1,7 +1,7 @@
 package it.unibo.alchemist.client.logic
 
 import it.unibo.alchemist.client.api.EnvironmentApi
-import it.unibo.alchemist.client.state.AppStore.store
+import it.unibo.alchemist.client.state.ClientStore.store
 import it.unibo.alchemist.common.model.RenderMode
 import it.unibo.alchemist.common.model.surrogate.EnvironmentSurrogate
 import it.unibo.alchemist.common.model.surrogate.PositionSurrogate
