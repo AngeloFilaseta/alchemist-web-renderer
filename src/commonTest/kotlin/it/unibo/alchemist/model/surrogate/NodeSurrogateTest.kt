@@ -30,7 +30,7 @@ class NodeSurrogateTest : StringSpec({
 
     "SurrogateNode should be serialized correctly" {
         val serialized = Json.encodeToString(surrogateNode)
-        val deserialized = Json.decodeFromString<NodeSurrogate<Int>>(serialized)
+        val deserialized: NodeSurrogate<Int, Position2DSurrogate> = Json.decodeFromString(serialized)
         deserialized shouldBe surrogateNode
     }
 })
