@@ -17,10 +17,12 @@ import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
  *  @param <T> concentration type.
  *  @param <PS> position surrogate type.
  *  @param <TS> concentration surrogate type.
- *  @param toConcentrationSurrogate the mapping function from <T> to <TS>
+ *  @param toConcentrationSurrogate the mapping function from <T> to <TS>.
+ *  @param toPositionSurrogate the mapping function from <P> to <PS>.
  */
 class EnvironmentMonitor<T, P, TS, PS> (
-    private val toConcentrationSurrogate: (T) -> TS
+    private val toConcentrationSurrogate: (T) -> TS,
+    private val toPositionSurrogate: (P) -> PS
 ) : OutputMonitor<T, P>
 where P : Position<P>, PS : PositionSurrogate {
 
@@ -34,7 +36,9 @@ where P : Position<P>, PS : PositionSurrogate {
      */
     override fun stepDone(environment: Environment<T, P>, reaction: Actionable<T>?, time: Time, step: Long) {
         store.dispatch(
-            SetEnvironmentSurrogate(environment.toEnvironmentSurrogate<T, P, TS, PS>(toConcentrationSurrogate))
+            SetEnvironmentSurrogate(
+                environment.toEnvironmentSurrogate(toConcentrationSurrogate, toPositionSurrogate)
+            )
         )
     }
 

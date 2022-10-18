@@ -15,13 +15,14 @@ typealias MoleculeSurrogateName = String
  * @param contents the mapping between molecules and concentrations.
  * @param position the position of the node.
  * @param <TS> the type of concentration surrogate.
+ * @param <PS> the type of position surrogate.
  */
 @Serializable
 @SerialName(serialName)
-data class NodeSurrogate<TS>(
+data class NodeSurrogate<TS, PS>(
     val id: Int,
     val contents: Map<MoleculeSurrogateName, TS>,
-    val position: PositionSurrogate
+    val position: PS
 ) {
     companion object {
         /**

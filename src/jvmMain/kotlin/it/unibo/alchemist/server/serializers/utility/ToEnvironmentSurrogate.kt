@@ -12,14 +12,16 @@ import it.unibo.alchemist.model.surrogate.PositionSurrogate
  * @param <P> the original type of the position.
  * @param <TS> the surrogate type of the concentration.
  * @param <PS> the surrogate type of the position.
- * @param toConcentrationSurrogate a function that maps a concentration to its surrogate class.
+ * @param toConcentrationSurrogate the mapping function from <T> to <TS>.
+ * @param toPositionSurrogate the mapping function from <P> to <PS>.
  */
 fun <T, P, TS, PS> Environment<T, P>.toEnvironmentSurrogate(
-    toConcentrationSurrogate: (T) -> TS
+    toConcentrationSurrogate: (T) -> TS,
+    toPositionSurrogate: (P) -> PS
 ): EnvironmentSurrogate<TS, PS>
     where P : Position<out P>, PS : PositionSurrogate {
     return EnvironmentSurrogate(
         dimensions,
-        nodes.map { it.toNodeSurrogate<T, P, TS, PS>(this, toConcentrationSurrogate) }
+        nodes.map { it.toNodeSurrogate<T, P, TS, PS>(this, toConcentrationSurrogate, toPositionSurrogate) }
     )
 }

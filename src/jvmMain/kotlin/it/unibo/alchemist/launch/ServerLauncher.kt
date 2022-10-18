@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package it.unibo.alchemist.launch
 
 import it.unibo.alchemist.AlchemistExecutionOptions
@@ -5,11 +7,13 @@ import it.unibo.alchemist.boundary.interfaces.OutputMonitor
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.loader.Loader
 import it.unibo.alchemist.model.interfaces.ILsaMolecule
-import it.unibo.alchemist.model.surrogate.Position2DSurrogate
+import it.unibo.alchemist.model.surrogate.PositionSurrogate
 import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
 import it.unibo.alchemist.server.serializers.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
+import it.unibo.alchemist.server.serializers.utility.ToPositionSurrogate.toGeneralPositionSurrogate
+import it.unibo.alchemist.server.serializers.utility.ToPositionSurrogate.toPosition2DSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
 import it.unibo.alchemist.server.state.actions.SetSimulation
 import it.unibo.alchemist.state.actions.SetIncarnation
@@ -58,11 +62,15 @@ object ServerLauncher : SimulationLauncher() {
         store.dispatch(SetSimulation(simulation))
         store.dispatch(SetIncarnation("sapere"))
         if (store.state.incarnation == "sapere") {
-            @Suppress("UNCHECKED_CAST")
             val environmentMonitor: OutputMonitor<Any, Nothing> =
-                EnvironmentMonitor<
-                    List<ILsaMolecule>, Nothing, List<ILsaMoleculeSurrogate>, Position2DSurrogate
-                    >(toSapereConcentrationSurrogate) as OutputMonitor<Any, Nothing>
+                EnvironmentMonitor<List<ILsaMolecule>, Nothing, List<ILsaMoleculeSurrogate>, PositionSurrogate>(
+                    toSapereConcentrationSurrogate,
+                    if (simulation.environment.dimensions == 2) {
+                        toPosition2DSurrogate
+                    } else {
+                        toGeneralPositionSurrogate
+                    }
+                ) as OutputMonitor<Any, Nothing>
             simulation.addOutputMonitor(environmentMonitor)
         }
     }
