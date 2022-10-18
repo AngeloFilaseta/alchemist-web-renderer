@@ -11,9 +11,9 @@ import it.unibo.alchemist.model.surrogate.PositionSurrogate
 import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate
 import it.unibo.alchemist.server.Server
 import it.unibo.alchemist.server.monitor.EnvironmentMonitor
-import it.unibo.alchemist.server.serializers.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
-import it.unibo.alchemist.server.serializers.utility.ToPositionSurrogate.toGeneralPositionSurrogate
-import it.unibo.alchemist.server.serializers.utility.ToPositionSurrogate.toPosition2DSurrogate
+import it.unibo.alchemist.server.surrogates.utility.ToConcentrationSurrogate.toSapereConcentrationSurrogate
+import it.unibo.alchemist.server.surrogates.utility.ToPositionSurrogate.toGeneralPositionSurrogate
+import it.unibo.alchemist.server.surrogates.utility.ToPositionSurrogate.toPosition2DSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
 import it.unibo.alchemist.server.state.actions.SetSimulation
 import it.unibo.alchemist.state.actions.SetIncarnation

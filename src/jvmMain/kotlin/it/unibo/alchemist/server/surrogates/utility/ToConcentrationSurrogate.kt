@@ -1,4 +1,4 @@
-package it.unibo.alchemist.server.serializers.utility
+package it.unibo.alchemist.server.surrogates.utility
 
 import it.unibo.alchemist.model.interfaces.ILsaMolecule
 import it.unibo.alchemist.model.surrogate.concentrations.sapere.ILsaMoleculeSurrogate

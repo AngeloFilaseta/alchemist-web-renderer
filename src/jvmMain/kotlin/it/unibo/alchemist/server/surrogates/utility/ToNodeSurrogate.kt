@@ -1,4 +1,4 @@
-package it.unibo.alchemist.server.serializers.utility
+package it.unibo.alchemist.server.surrogates.utility
 
 import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.model.interfaces.Node

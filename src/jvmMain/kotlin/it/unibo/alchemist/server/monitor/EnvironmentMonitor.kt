@@ -6,7 +6,7 @@ import it.unibo.alchemist.model.interfaces.Environment
 import it.unibo.alchemist.model.interfaces.Position
 import it.unibo.alchemist.model.interfaces.Time
 import it.unibo.alchemist.model.surrogate.PositionSurrogate
-import it.unibo.alchemist.server.serializers.utility.toEnvironmentSurrogate
+import it.unibo.alchemist.server.surrogates.utility.toEnvironmentSurrogate
 import it.unibo.alchemist.server.state.ServerStore.store
 import it.unibo.alchemist.state.actions.SetEnvironmentSurrogate
 
